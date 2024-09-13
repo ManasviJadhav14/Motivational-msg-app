@@ -1,0 +1,69 @@
+
+<html>
+     <head>
+          <title>Motivational Msg app</title>
+          <style>
+                *{font-size:50px;font-family:Cambria;}
+                body {
+            background-image: url('mm app.jpeg');
+            background-size: cover; /* Ensures the image covers the entire background */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+        ;}
+                .container{text-align:center;
+                 padding:20px;
+                 border:2px solid;
+                 border radius:8px;
+                 background-color:#fff;}
+                
+                 button{
+                 text-align:center;
+                 font-size:10px:
+                 margin:10px;
+                 border-radius:4px;}
+
+                 #quote{
+                 font-size:50px;
+                 font-family:Cambria;
+                 border-radius:solid;}
+                  
+                 #author{
+                 font-size:40px;
+                 font-family:Cambria;
+                 border-radius:solid;}
+
+                 h2{width:70%;border:solid;border-radius:40px;}
+                
+                          </style>
+     </head>
+     <body>
+          <center>
+               <h1>Motivational Msg App</h1>
+               <form onsubmit="gm()">
+                    <input type="submit"value="Get MSG"/>
+               </form>
+
+                              <h2 id="quote"/>
+               <h2 id="author"/>
+               </div>
+               
+               <script>
+               function gm()
+               {  
+                    event.preventDefault();
+                    let quote=document.getElementById("quote");
+                    let author=document.getElementById("author");
+
+                    let url="https://quotes-api-self.vercel.app/quote";
+                    fetch(url)
+                    .then(res=>res.json())
+                    .then(data=>{
+                         quote.innerHTML=data.quote;
+                         author.innerHTML=data.author;
+                     })
+                    .catch(err=>alert("issue"+err));
+                }
+                </script>
+          </center>
+     </body>
+</html>
